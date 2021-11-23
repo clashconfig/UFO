@@ -630,9 +630,17 @@ proxy-groups:
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
 
+rule-providers:
+  iran:
+    type: http
+    behavior: classical
+    url: "https://github.com/SamadiPour/iran-hosted-domains/releases/latest/download/clash_rules.yaml"
+    path: ./ruleset/iran.yaml
+    interval: 432000
+
 rules:
+  - RULE-SET,iran,DIRECT
   - DOMAIN-SUFFIX,ad.com,REJECT
-  - GEOIP,IR,DIRECT
   - MATCH,🔆 LIST
   - IP-CIDR,8.8.8.8/32,🔆 LIST
   - IP-CIDR,8.8.4.4/32,🔆 LIST

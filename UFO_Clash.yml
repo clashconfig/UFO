@@ -1,6 +1,6 @@
 mixed-port: 7890
 allow-lan: false
-mode: Rule
+mode: Global
 log-level: silent
 external-controller: 127.0.0.1:9090
 dns:

@@ -564,6 +564,7 @@ rules:
   - IP-CIDR,8.8.4.4/32,🔰 Select
   - IP-CIDR,1.1.1.1/32,🔰 Select
   - IP-CIDR,1.0.0.1/32,🔰 Select
+  - DOMAIN-SUFFIX,developers.google.com,US 🇺🇸 United States
   - DOMAIN-SUFFIX,netflix.com,🖥 Netflix
   - DOMAIN-SUFFIX,spotify.com,🎵 Spotify
   - DOMAIN-SUFFIX,ad.com,🚫 Intercept

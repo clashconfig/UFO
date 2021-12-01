@@ -209,7 +209,7 @@ proxy-groups:
       - SRB 🇷🇸 Belgrade
       - SVK 🇸🇰 Bratislava
       - SVN 🇸🇮 Ljubljana
-      - TUR 🇹🇷 Turkey
+      - TUR 🇹🇷 Turkey (Auto)
       - TW 🇹🇼 Taiwan
       - SWE 🇸🇪 Stockholm 2
       - UK 🇬🇧 United Kingdom
@@ -265,7 +265,8 @@ proxy-groups:
       - SRB 🇷🇸 Belgrade
       - SVK 🇸🇰 Bratislava
       - SVN 🇸🇮 Ljubljana
-      - TUR 🇹🇷 Turkey
+      - TUR 🇹🇷 Turkey (Game)
+      - TUR 🇹🇷 Turkey (Auto)
       - TW 🇹🇼 Taiwan
       - SWE 🇸🇪 Stockholm 2
       - UK 🇬🇧 United Kingdom
@@ -466,7 +467,16 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 600
     _index: 6
-  - name: TUR 🇹🇷 Turkey
+  - name: TUR 🇹🇷 Turkey (Game)
+    proxies:
+      - TUR 🇹🇷 Bahçelievler
+      - TUR 🇹🇷 Istanbul
+      - TUR 🇹🇷 Istanbul 2
+      - TUR 🇹🇷 Istanbul 3
+      - TUR 🇹🇷 Istanbul 4
+      - TUR 🇹🇷 Istanbul 5
+    type: select
+  - name: TUR 🇹🇷 Turkey (Auto)
     proxies:
       - TUR 🇹🇷 Bahçelievler
       - TUR 🇹🇷 Istanbul
@@ -477,6 +487,7 @@ proxy-groups:
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 600
+    _index: 27
   - name: TW 🇹🇼 Taiwan
     proxies:
       - TW 🇹🇼 Taipei

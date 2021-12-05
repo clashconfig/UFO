@@ -1,0 +1,85 @@
+mixed-port: 7890
+allow-lan: false
+mode: Global
+log-level: silent
+external-controller: 127.0.0.1:9090
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.adguard.com/dns-query
+  fallback:
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.adguard.com/dns-query
+proxies:
+  - name: DE 🇩🇪 Germany 1
+    type: ss
+    server: de-ss.racevpn.com
+    port: "38100"
+    cipher: aes-256-gcm
+    password: XQd3d3yTPW
+  - name: GB 🇬🇧 United Kingdom 1
+    type: ss
+    server: 134.195.196.52
+    port: "8090"
+    cipher: aes-256-gcm
+    password: PCnnH6SQSnfoS27
+  - name: GB 🇬🇧 United Kingdom 2
+    type: ss
+    server: 172.99.190.186
+    port: "2375"
+    cipher: aes-256-gcm
+    password: faBAoD54k87UJG7
+proxy-groups:
+  - name: 🔥 Auto
+    type: url-test
+    proxies:
+      - GB 🇬🇧 United Kingdom 1
+      - GB 🇬🇧 United Kingdom 2
+      - DE 🇩🇪 Germany 1
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+  - name: 🔰 Select
+    proxies:
+      - 🔥 Auto
+      - ✅ Direct
+      - GB 🇬🇧 United Kingdom 1
+      - GB 🇬🇧 United Kingdom 2
+    type: select
+  - name: ✅ Direct
+    type: select
+    proxies:
+      - DIRECT
+  - name: 🚫 Intercept
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+rule-providers:
+  iran:
+    type: http
+    behavior: classical
+    url: https://github.com/SamadiPour/iran-hosted-domains/releases/latest/download/clash_rules.yaml
+    path: ./ruleset/iran.yaml
+    interval: 432000
+rules:
+  - SRC-IP-CIDR,192.168.1.201/32,✅ Direct
+  - IP-CIDR,10.0.0.0/8,✅ Direct
+  - IP-CIDR,172.16.0.0/12,✅ Direct
+  - IP-CIDR,127.0.0.0/8,✅ Direct
+  - IP-CIDR,192.168.0.0/16,✅ Direct
+  - DOMAIN-SUFFIX,twitch.tv,✅ Direct
+  - IP-CIDR,8.8.8.8/32,🔰 Select
+  - IP-CIDR,8.8.4.4/32,🔰 Select
+  - IP-CIDR,1.1.1.1/32,🔰 Select
+  - IP-CIDR,1.0.0.1/32,🔰 Select
+  - DOMAIN-SUFFIX,twitch.tv,✅ Direct
+  - DOMAIN-SUFFIX,media-amazon.com,✅ Direct
+  - RULE-SET,iran,✅ Direct
+  - DOMAIN-SUFFIX,ad.com,🚫 Intercept
+  - SRC-IP-CIDR,192.168.1.201/32,✅ Direct
+  - IP-CIDR,127.0.0.0/8,✅ Direct
+  - MATCH,🔰 Select
